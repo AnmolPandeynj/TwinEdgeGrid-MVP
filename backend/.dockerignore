@@ -1,0 +1,7 @@
+# Exclude raw training datasets from Docker context
+lstm/data/
+lstm/validation_plot.png
+__pycache__/
+*.pyc
+.git/
+*.tar.gz

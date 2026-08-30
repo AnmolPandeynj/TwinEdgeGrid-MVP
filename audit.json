@@ -1,0 +1,1284 @@
+{
+  "summary": {
+    "files_analyzed": 49,
+    "total_lines": 5372,
+    "code_lines": 4151,
+    "comment_lines": 297
+  },
+  "languages": {
+    "python": {
+      "files": 37,
+      "lines": 3256
+    },
+    "typescript": {
+      "files": 12,
+      "lines": 895
+    }
+  },
+  "security": {
+    "critical": [],
+    "high": [
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 46,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\main.py",
+        "line": 42,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\main.py",
+        "line": 43,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\main.py",
+        "line": 44,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\middleware\\falcon_traffic_police.py",
+        "line": 96,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\routers\\ws.py",
+        "line": 36,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\routers\\ws.py",
+        "line": 78,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\services\\augrid_service.py",
+        "line": 124,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\services\\falcon_service.py",
+        "line": 50,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\services\\falcon_service.py",
+        "line": 147,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\services\\falcon_service.py",
+        "line": 163,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\services\\orchestrator.py",
+        "line": 103,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\services\\smartprice_service.py",
+        "line": 55,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      },
+      {
+        "file": "backend\\app\\services\\smartprice_service.py",
+        "line": 196,
+        "type": "sql_injection",
+        "severity": "high",
+        "message": "Potential SQL injection vulnerability"
+      }
+    ],
+    "medium": [
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 51,
+        "type": "xss_vulnerable",
+        "severity": "medium",
+        "message": "Potential XSS vulnerability - unescaped HTML rendering"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 56,
+        "type": "unsafe_react_html",
+        "severity": "medium",
+        "message": "React unsafe HTML pattern detected - ensure content is sanitized"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 61,
+        "type": "insecure_protocol",
+        "severity": "medium",
+        "message": "Insecure HTTP protocol used"
+      }
+    ],
+    "low": [
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 66,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 553,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 554,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 555,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 556,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 560,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 561,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 562,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 563,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 564,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 565,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 568,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 570,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 571,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 576,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 577,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 578,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 579,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 580,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 582,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 585,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 586,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 590,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 591,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 592,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 593,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 597,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 598,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 599,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 600,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 601,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 605,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 606,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 607,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 608,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 609,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 613,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 614,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 615,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 616,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 617,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 618,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 619,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 623,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 625,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 626,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 627,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 629,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 630,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 669,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 679,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 681,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "line": 687,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 361,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 374,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 809,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 813,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 814,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 816,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 817,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 821,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 824,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 825,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 826,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 827,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 828,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 829,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 830,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 831,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 833,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "line": 834,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 49,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 50,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 51,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 52,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 53,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 54,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 110,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 130,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 131,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 132,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 133,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 134,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 135,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\traffic_generator.py",
+        "line": 136,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 75,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 121,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 126,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 133,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 134,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 142,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 143,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 150,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 152,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 153,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 169,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 192,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 196,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 197,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 204,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 207,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 215,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 216,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 268,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 269,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 270,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 271,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 272,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 291,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 298,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 299,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 326,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 327,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 328,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 329,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 330,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 331,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 332,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 344,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 356,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 357,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 374,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 408,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 443,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 447,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 451,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 454,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 457,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 463,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 471,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 472,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 475,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 480,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 484,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 490,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 491,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 492,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 493,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 494,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 495,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 496,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 497,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 498,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 499,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "line": 500,
+        "type": "debug_code",
+        "severity": "low",
+        "message": "Debug code should be removed in production"
+      }
+    ],
+    "info": []
+  },
+  "complexity": {
+    "high_complexity_files": [
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+        "complexity": 130,
+        "nesting": 3
+      },
+      {
+        "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+        "complexity": 34,
+        "nesting": 6
+      },
+      {
+        "file": "backend\\app\\middleware\\falcon_traffic_police.py",
+        "complexity": 21,
+        "nesting": 1
+      },
+      {
+        "file": "backend\\app\\services\\augrid_service.py",
+        "complexity": 31,
+        "nesting": 0
+      },
+      {
+        "file": "backend\\app\\services\\falcon_service.py",
+        "complexity": 25,
+        "nesting": 1
+      },
+      {
+        "file": "backend\\app\\services\\smartprice_service.py",
+        "complexity": 44,
+        "nesting": 1
+      },
+      {
+        "file": "backend\\scripts\\train_augrid.py",
+        "complexity": 60,
+        "nesting": 1
+      }
+    ],
+    "average_complexity": 10.4
+  },
+  "code_smells": [
+    {
+      "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+      "type": "large_file",
+      "details": "691 lines (threshold: 500)"
+    },
+    {
+      "file": ".agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+      "type": "large_file",
+      "details": "867 lines (threshold: 500)"
+    },
+    {
+      "file": "backend\\scripts\\train_augrid.py",
+      "type": "large_file",
+      "details": "504 lines (threshold: 500)"
+    }
+  ],
+  "dependencies": {
+    "package_managers": [],
+    "total_deps": 0,
+    "outdated": [],
+    "vulnerable": [],
+    "recommendations": []
+  },
+  "tests": {
+    "source_files": 38,
+    "test_files": 4,
+    "estimated_coverage": 10,
+    "rating": "poor",
+    "recommendation": "Consider adding more tests (60% gap to target)"
+  },
+  "documentation": {
+    "has_readme": true,
+    "has_contributing": false,
+    "has_license": false,
+    "has_changelog": false,
+    "api_docs": [],
+    "score": 30
+  },
+  "overall_score": 0,
+  "grade": "F",
+  "recommendations": [
+    {
+      "priority": "P1",
+      "category": "security",
+      "issue": "Potential SQL injection vulnerability",
+      "file": ".agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+      "action": "Review and fix security vulnerability"
+    },
+    {
+      "priority": "P1",
+      "category": "security",
+      "issue": "Potential SQL injection vulnerability",
+      "file": "backend\\app\\main.py",
+      "action": "Review and fix security vulnerability"
+    },
+    {
+      "priority": "P1",
+      "category": "security",
+      "issue": "Potential SQL injection vulnerability",
+      "file": "backend\\app\\main.py",
+      "action": "Review and fix security vulnerability"
+    },
+    {
+      "priority": "P1",
+      "category": "quality",
+      "issue": "Low test coverage: 10%",
+      "action": "Add unit tests to improve coverage to at least 70%"
+    },
+    {
+      "priority": "P2",
+      "category": "maintainability",
+      "issue": "High complexity in .agents\\skills\\senior-fullstack\\scripts\\code_quality_analyzer.py",
+      "action": "Refactor to reduce cyclomatic complexity"
+    },
+    {
+      "priority": "P2",
+      "category": "maintainability",
+      "issue": "High complexity in .agents\\skills\\senior-fullstack\\scripts\\project_scaffolder.py",
+      "action": "Refactor to reduce cyclomatic complexity"
+    }
+  ]
+}

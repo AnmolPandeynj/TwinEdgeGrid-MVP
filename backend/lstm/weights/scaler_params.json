@@ -1,0 +1,10 @@
+{
+  "data_min": 6.6667e-05,
+  "data_max": 420.1482802785,
+  "feature": "load_kw",
+  "method": "min-max",
+  "range": [
+    0.0,
+    1.0
+  ]
+}

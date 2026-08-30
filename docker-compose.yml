@@ -1,0 +1,101 @@
+version: "3.9"
+
+services:
+  # ── Redis: message broker + SDN meter store ────────────
+  redis_broker:
+    image: redis:7-alpine
+    command: redis-server --save 60 1 --loglevel warning
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - edge_network
+      - cloud_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ── Edge Node: FastAPI orchestrator ────────────────────
+  edge_node:
+    build:
+      context: .
+      dockerfile: Dockerfile.edge
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      - REDIS_URL=redis://redis_broker:6379/0
+    depends_on:
+      redis_broker:
+        condition: service_healthy
+    networks:
+      - edge_network
+    volumes:
+      - ./backend:/app
+    restart: unless-stopped
+
+  # ── Cloud Server: Celery worker pool ───────────────────
+  cloud_server:
+    build:
+      context: .
+      dockerfile: Dockerfile.cloud
+    env_file: .env
+    environment:
+      - CELERY_BROKER_URL=redis://redis_broker:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis_broker:6379/1
+    depends_on:
+      redis_broker:
+        condition: service_healthy
+    networks:
+      - cloud_network
+    volumes:
+      - ./backend:/app
+    # Inject WAN latency via tc (requires NET_ADMIN)
+    cap_add:
+      - NET_ADMIN
+    entrypoint: >
+      sh -c "
+        apk add --no-cache iproute2 2>/dev/null || apt-get update && apt-get install -y iproute2 2>/dev/null;
+        tc qdisc add dev eth0 root netem delay ${WAN_DELAY_MS:-50}ms ${WAN_JITTER_MS:-10}ms distribution normal 2>/dev/null || true;
+        celery -A app.tasks.celery_app worker
+        --loglevel=info
+        --concurrency=${CELERY_WORKER_CONCURRENCY:-4}
+        --pool=prefork
+      "
+    restart: unless-stopped
+
+  # ── Frontend: Vite dev server ──────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - edge_node
+    networks:
+      - edge_network
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_WS_URL=ws://localhost:8000/ws/dashboard
+      - VITE_API_URL=http://localhost:8000
+
+networks:
+  edge_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+  cloud_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.29.0.0/16
+
+volumes:
+  redis_data:
