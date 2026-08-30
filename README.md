@@ -4,33 +4,7 @@ A production-grade MVP that validates the **Edge-Cloud Continuum** concept for I
 
 ## Architecture
 
-```mermaid
-graph TB
-    subgraph "Edge Network (172.28.0.0/16)"
-        FE["Frontend<br/>React + Vite<br/>:5173"]
-        EN["Edge Node<br/>FastAPI + Uvicorn<br/>:8000"]
-        FE -->|"WebSocket<br/>2 Hz"| EN
-    end
-
-    subgraph "Shared"
-        RD["Redis 7<br/>Broker + Meter Tables<br/>:6379"]
-    end
-
-    subgraph "Cloud Network (172.29.0.0/16)"
-        CS["Cloud Server<br/>Celery Workers ×4"]
-    end
-
-    EN -->|"FALCON Lua Scripts"| RD
-    EN -->|"Celery .delay()"| RD
-    RD -->|"Task Queue"| CS
-    CS -->|"Result Backend"| RD
-    EN -.->|"50ms ± 10ms<br/>(tc netem)"| CS
-
-    style FE fill:#1A2035,stroke:#00E5A0,color:#F9FAFB
-    style EN fill:#1A2035,stroke:#00E5A0,color:#F9FAFB
-    style RD fill:#1A2035,stroke:#F59E0B,color:#F9FAFB
-    style CS fill:#1A2035,stroke:#6366F1,color:#F9FAFB
-```
+![System Architecture](architecture.png)
 
 ## Research Pipeline
 
