@@ -78,12 +78,15 @@ class FalconTrafficPoliceMiddleware(BaseHTTPMiddleware):
 
         meter_key = TRAFFIC_TYPE_TO_METER[traffic_type]
 
-        # Estimate payload size from Content-Length header
-        content_length = int(request.headers.get("content-length", "256"))
+        # Use simulated Mbps if provided, otherwise estimate from content length
+        try:
+            simulated_mbps = int(request.headers.get("X-Simulated-Mbps", 0))
+        except ValueError:
+            simulated_mbps = 0
 
-        # Scale bytes to a simulated Mbps cost for the MVP so the 100 req/s 
-        # traffic generator realistically stresses the 1000 Mbps global limit
-        simulated_mbps = max(1, content_length // 100)
+        if simulated_mbps <= 0:
+            content_length = int(request.headers.get("content-length", "256"))
+            simulated_mbps = max(1, content_length // 100)
 
         try:
             # Get Redis client from app state

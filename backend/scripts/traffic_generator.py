@@ -27,14 +27,7 @@ async def generate_traffic(
     duration: int,
     traffic_mix: dict[str, float] | None = None,
 ) -> None:
-    """Generate simulated smart meter traffic at a specified rate.
-
-    Args:
-        target: Base URL of the Edge Node (e.g., http://localhost:8000)
-        rate: Requests per second
-        duration: Duration in seconds
-        traffic_mix: Dict mapping traffic types to ratios (must sum to ~1.0)
-    """
+    """Generate simulated smart meter traffic at a specified rate."""
     if traffic_mix is None:
         traffic_mix = {"data": 0.5, "video": 0.3, "voip": 0.2}
 
@@ -55,20 +48,23 @@ async def generate_traffic(
 
     start_time = time.monotonic()
 
-    async with httpx.AsyncClient(timeout=10.0) as client:
+    # Limit concurrency to 20 active requests so Uvicorn doesn't get overwhelmed and drop connections
+    semaphore = asyncio.Semaphore(20)
+
+    async with httpx.AsyncClient(timeout=15.0) as client:
         while (time.monotonic() - start_time) < duration:
             batch_start = time.monotonic()
 
             # Generate batch of readings
             traffic_type = random.choices(traffic_types, weights=traffic_weights, k=1)[0]
-            batch_size = random.randint(1, 10)
+            batch_size = random.randint(5, 20)  # Increased to create more load
 
             payload = {
                 "readings": [
                     {
                         "meter_id": f"meter_{random.randint(1, 500):04d}",
                         "timestamp": datetime.now(timezone.utc).isoformat(),
-                        "load_kw": round(random.uniform(0.5, 50.0), 2),
+                        "load_kw": round(random.uniform(10.0, 100.0), 2),  # Increased load
                         "voltage": round(random.uniform(220.0, 240.0), 1),
                         "traffic_type": traffic_type,
                         "payload_size_bytes": random.randint(128, 2048),
@@ -78,7 +74,8 @@ async def generate_traffic(
                 "source_node": "traffic_gen",
             }
 
-            def handle_response(t: asyncio.Task, t_type: str) -> None:
+            def handle_response(t: asyncio.Task, t_type: str, sem: asyncio.Semaphore) -> None:
+                sem.release()
                 try:
                     resp = t.result()
                     stats["total"] += 1
@@ -89,19 +86,26 @@ async def generate_traffic(
                     else:
                         stats["errors"] += 1
                 except asyncio.CancelledError:
-                    pass  # Ignore cancellations on Ctrl+C
+                    pass
                 except Exception:
                     stats["total"] += 1
                     stats["errors"] += 1
 
+            # Simulate heavy bandwidth usage to trigger FALCON reallocations
+            simulated_mbps = str(random.randint(10, 50))
+            
+            await semaphore.acquire()
             task = asyncio.create_task(
                 client.post(
                     url,
                     json=payload,
-                    headers={"X-Traffic-Type": traffic_type},
+                    headers={
+                        "X-Traffic-Type": traffic_type,
+                        "X-Simulated-Mbps": simulated_mbps
+                    },
                 )
             )
-            task.add_done_callback(lambda t, tt=traffic_type: handle_response(t, tt))
+            task.add_done_callback(lambda t, tt=traffic_type, s=semaphore: handle_response(t, tt, s))
 
             # Print progress every second
             elapsed = time.monotonic() - start_time
