@@ -64,7 +64,7 @@ async def generate_traffic(
                     {
                         "meter_id": f"meter_{random.randint(1, 500):04d}",
                         "timestamp": datetime.now(timezone.utc).isoformat(),
-                        "load_kw": round(random.uniform(10.0, 100.0), 2),  # Increased load
+                        "load_kw": round(random.uniform(0.5, 50.0), 2),  # Reverted to LSTM training distribution
                         "voltage": round(random.uniform(220.0, 240.0), 1),
                         "traffic_type": traffic_type,
                         "payload_size_bytes": random.randint(128, 2048),

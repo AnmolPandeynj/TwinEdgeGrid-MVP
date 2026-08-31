@@ -45,7 +45,7 @@ async def init_prosumers(redis: Redis, settings: Settings) -> None:
             prosumer_id=f"prosumer_{i:03d}",
             cooperation_index=round(random.uniform(0.2, 0.9), 3),
             reward_factor=round(random.uniform(0.3, 0.7), 3),
-            stored_energy_kwh=round(random.uniform(1.0, 15.0), 2),
+            stored_energy_kwh=round(random.uniform(0.5, 3.0), 2), # Lowered to trigger deficit more frequently
             status=ProsumerStatus.IDLE,
         )
         await redis.hset(
@@ -101,12 +101,14 @@ async def execute_stackelberg_round(
     alpha = settings.smartprice_alpha
     gamma = settings.smartprice_decay_rate
 
-    # ── Step 1: Reward Factor Recalculation ──────────────
+    # ── Step 1: Reward Factor Recalculation & Battery Recharge ──
     for p in prosumers:
         p.reward_factor = round(
             alpha * p.cooperation_index + (1 - alpha) * p.reward_factor,
             4,
         )
+        # Simulate solar generation / battery charging
+        p.stored_energy_kwh = round(min(15.0, p.stored_energy_kwh + random.uniform(0.05, 0.2)), 2)
 
     # ── Step 2: Pricing Determination ────────────────────
     deviation = abs(predicted_load - actual_load) / max(actual_load, 1e-6)
