@@ -1,120 +1,69 @@
-# TwinEdgeGrid — Smart Meter Edge-Aggregation Dashboard & Task Offloading Simulator
+# TwinEdgeGrid: A Digital Twin for the Edge-Cloud Continuum
+**Validation of D-FALCON, AuGrid, and SmartPrice Architectures in Smart Grids**
 
-A production-grade MVP that validates the **Edge-Cloud Continuum** concept for IoT smart grids. Implements three foundational research algorithms as a containerized microservices stack with a real-time Digital Twin dashboard.
+This repository serves as a production-grade research artifact, implementing a containerized microservices architecture to validate the theoretical paradigms of the **Edge-Cloud Continuum** within IoT-enabled smart grids. It functions as a real-time Digital Twin, explicitly translating three foundational research algorithms into an executable, highly concurrent simulation environment.
 
-## Architecture
+## 1. Academic Integration & Theoretical Implementations
+
+The core objective of TwinEdgeGrid is to demonstrate the practical viability of advanced mathematical and game-theoretic models under heavy, simulated IoT traffic loads. 
+
+### 1.1 The Edge-Cloud Continuum & Task Orchestration
+To mitigate Edge CPU bottlenecks caused by massive IoT data ingestion, the system enforces a strict task-routing threshold. When the local Edge Node (FastAPI/Uvicorn) breaches 80% CPU utilization, inference tasks are dynamically offloaded to a Cloud Server worker pool via a Redis-backed Celery task queue. This guarantees sub-50ms latency and prevents thread pool exhaustion, preserving the structural integrity of the continuum.
+
+### 1.2 AuGrid: Lookback-2 LSTM Augury
+The predictive layer employs a PyTorch Long Short-Term Memory (LSTM) recurrent neural network trained on the UMass Smart* dataset. To balance computational overhead with high forecasting accuracy, the model strictly adheres to a **lookback-2 LSTM augury** configuration. The Edge node performs Min-Max scaled inference in real-time to forecast the aggregated electrical load, generating the critical prerequisite data required for subsequent pricing calculations.
+
+### 1.3 SmartPrice: Single-Leader-Multiple-Follower Stackelberg Game
+Armed with the LSTM's predictive augury, the system engages in dynamic pricing regulation using a **single-leader-multiple-follower Stackelberg game**. The micro-grid (acting as the sole leader) mathematically enforces cooperation among 50 simulated prosumers (the followers). By calculating real-time cooperation indices and updating reward factors via a weighted moving average, the system achieves a theoretical Stackelberg equilibrium—systematically penalizing energy hoarding while financially rewarding cooperative followers.
+
+### 1.4 FALCON: SDN Traffic Slicing via D-FALCON
+To emulate software-defined networking (SDN) capacity orchestration without physical OpenFlow switches, we implemented atomic Lua scripts within Redis, functioning as simulated hardware TCAM meter tables. The background D-FALCON heuristic continuously monitors bandwidth deficits, mathematically reallocating surplus bandwidth from underutilized network slices to high-priority traffic streams in real-time to minimize packet drop rates.
+
+## 2. System Architecture
 
 ![System Architecture](architecture.png)
 
-## Research Pipeline
+## 3. Quick Start Deployment
 
-| Layer | Algorithm | Paper | Implementation |
-|-------|-----------|-------|----------------|
-| **Step 1** | FALCON / D-FALCON | SDN bandwidth orchestration | Redis Lua middleware + background heuristic |
-| **Step 2** | AuGrid LSTM | Load forecasting (lookback=2) | CPU-aware routing: edge < 80% → local, ≥ 80% → Celery cloud |
-| **Step 3** | SmartPrice | Stackelberg game pricing | Reward factor + variable pricing + follower simulation |
-
-## Quick Start
+The entire research environment is fully containerized for seamless academic reproduction and evaluation.
 
 ### Prerequisites
-- Docker Desktop with WSL2 (for `tc` latency injection)
-- Node.js 20+ (for frontend development)
-- Python 3.12+ (for local backend development)
+- Docker and Docker Compose
+- WSL2 (for `tc` latency injection on Windows environments)
 
-### Run with Docker Compose
+### Spin up the MVP
+To initialize the Edge Node, Cloud Celery Workers, Redis Broker, and React Dashboard, execute the following from the root directory:
 
 ```bash
-# Copy environment template
+# Copy the environment template
 cp .env.example .env
 
-# Build and start all services
-docker compose up --build
-
-# Access:
-#   Dashboard:  http://localhost:5173
-#   API Docs:   http://localhost:8000/docs
-#   Health:     http://localhost:8000/
+# Build and spin up the microservices stack
+docker-compose up --build
 ```
 
-### Local Development
+### Accessing the Digital Twin
+Once the containers have successfully initialized, you can access the environment at:
+- **Real-Time Dashboard:** `http://localhost:5173`
+- **FastAPI OpenAPI Documentation:** `http://localhost:8000/docs`
 
-```bash
-# Backend
-cd backend
-pip install -e ".[dev]"
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-
-# Frontend (separate terminal)
-cd frontend
-npm install
-npm run dev
-
-# Redis (separate terminal)
-docker run -d --name redis -p 6379:6379 redis:7-alpine
-
-# Celery Worker (separate terminal)
-cd backend
-celery -A app.tasks.celery_app worker --loglevel=info
-```
-
-### Stress Test
+### Generating Traffic Load
+To observe the Edge-Cloud Continuum offloading and the Stackelberg game equilibrium in action, you must inject simulated IoT traffic. Execute the following script in a separate terminal to sustain a 100 req/s load:
 
 ```bash
 cd backend
-python scripts/traffic_generator.py --rate 200 --duration 60 --target http://localhost:8000
+python scripts/traffic_generator.py --rate 100 --duration 120 --target http://localhost:8000
 ```
 
-## Dashboard Panels
-
-| Panel | Visualization | Validates |
-|-------|---------------|-----------|
-| **Edge-Cloud Continuum** | Dual CPU line chart + offload indicator | Dynamic task offloading at 80% threshold |
-| **FALCON SDN Slicing** | Grouped bar chart + reallocation log | D-FALCON heuristic bandwidth orchestration |
-| **AuGrid Forecasting** | Area chart (predicted vs actual) + RMSE | LSTM lookback=2 load prediction |
-| **SmartPrice Market** | Prosumer data grid + KPI widgets | Stackelberg game cooperation enforcement |
-
-## Tech Stack
+## 4. Technical Stack
 
 | Component | Technology | Purpose |
 |-----------|------------|---------|
-| Backend | FastAPI + Uvicorn | Async API + WebSocket server |
-| Task Queue | Celery + Redis | Edge → Cloud task offloading |
-| Cache/Store | Redis 7 | SDN meter tables + message broker |
-| ML Model | PyTorch LSTM | AuGrid load prediction |
-| Frontend | React 18 + Vite | Digital Twin dashboard SPA |
-| Charts | Recharts | Real-time data visualization |
-| Containers | Docker Compose | Network isolation + latency simulation |
+| **Edge Node** | FastAPI + Uvicorn | Asynchronous HTTP/WebSocket processing |
+| **Cloud Server** | Celery + Redis | Non-blocking background task execution |
+| **State Layer** | Redis 7 | Atomic Lua SDN tables & Celery broker |
+| **Forecasting** | PyTorch | LSTM neural network inference |
+| **Digital Twin** | React 18 + Vite | Interactive simulation dashboard |
 
-## Project Structure
-
-```
-TwinEdgeGrid MVP/
-├── docker-compose.yml          # 4 services, 2 isolated networks
-├── Dockerfile.edge             # Edge Node (single Uvicorn worker)
-├── Dockerfile.cloud            # Cloud Server (Celery worker pool)
-├── .env.example                # Configuration template
-│
-├── backend/
-│   ├── app/
-│   │   ├── main.py             # FastAPI app factory
-│   │   ├── config.py           # Pydantic V2 Settings
-│   │   ├── middleware/         # FALCON traffic police
-│   │   ├── models/             # Pydantic schemas
-│   │   ├── routers/            # API endpoints + WebSocket
-│   │   ├── services/           # Business logic (FALCON, AuGrid, SmartPrice)
-│   │   └── tasks/              # Celery tasks
-│   ├── lstm/                   # PyTorch LSTM model
-│   ├── scripts/                # Traffic generator
-│   └── tests/                  # pytest-asyncio suite
-│
-└── frontend/
-    └── src/
-        ├── hooks/              # useWebSocket, useTelemetry
-        ├── components/         # Dashboard panels (organisms)
-        ├── pages/              # Dashboard page
-        └── types/              # TypeScript interfaces
-```
-
-## License
-
-MIT — Built for the TwinEdgeGrid SPARC-funded research project at IIT Indore.
+## 5. License
+MIT — Engineered for the TwinEdgeGrid SPARC-funded research project.
