@@ -33,7 +33,7 @@ The real-time React dashboard visualizes the live state of the TwinEdgeGrid back
 
 ![Prosumer Market Ledger](assets/ledger_preview.png)
 
-An interactive modal allows researchers to inspect the granular, per-prosumer variables computed by the Stackelberg game during each pricing round. It tracks the real-time `Cooperation Index`, `Reward Factor`, individual `Variable Price`, current `Stored Energy (kWh)`, and active status (`SELLING`, `HOARDING`, or `IDLE`) for all 50 virtual prosumers.
+An interactive modal allows researchers to inspect the granular. It tracks the real-time `Cooperation Index`, `Reward Factor`, individual `Variable Price`, current `Stored Energy (kWh)`, and active status (`SELLING`, `HOARDING`, or `IDLE`) for all 50 virtual prosumers.
 
 ## 3. System Architecture
 
