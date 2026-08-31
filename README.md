@@ -19,11 +19,21 @@ Armed with the LSTM's predictive augury, the system engages in dynamic pricing r
 ### 1.4 FALCON: SDN Traffic Slicing via D-FALCON
 To emulate software-defined networking (SDN) capacity orchestration without physical OpenFlow switches, we implemented atomic Lua scripts within Redis, functioning as simulated hardware TCAM meter tables. The background D-FALCON heuristic continuously monitors bandwidth deficits, mathematically reallocating surplus bandwidth from underutilized network slices to high-priority traffic streams in real-time to minimize packet drop rates.
 
-## 2. System Architecture
+## 2. Digital Twin Dashboard
+
+![TwinEdgeGrid Dashboard](assets/dashboard_preview.png)
+
+The real-time React dashboard visualizes the live state of the TwinEdgeGrid backend. It is divided into four primary telemetry quadrants:
+- **Edge-Cloud Continuum (Top Left)**: Displays CPU/RAM utilization and the total volume of predictions. The live graph tracks dynamic task routing as the system seamlessly shifts compute loads from the Edge to the Cloud when thresholds are breached.
+- **FALCON SDN Slicing (Top Right)**: Visualizes the D-FALCON heuristic algorithm. Displays the allocated global bandwidth across Video, VoIP, and Data slices. The dynamic bar charts represent real-time bandwidth reallocation from underutilized slices to overloaded ones to prevent packet drops.
+- **AuGrid Forecasting (Bottom Left)**: Monitors the PyTorch LSTM inference engine. Plots the lookback-2 LSTM's predicted load against the actual IoT load in real-time. Includes real-time tracking of inference latency (ms) and calculation of the Root Mean Square Error (RMSE) to gauge predictive augury accuracy.
+- **SmartPrice Market (Bottom Right)**: Tracks the active Stackelberg game mechanics. Displays the current Game Round and the dynamically calculated grid Energy Deficit. The graph plots the fluctuating Purchase Price against the historical Cooperative vs. Hoarding prices, confirming the achievement of a Stackelberg equilibrium that financially benefits cooperating virtual prosumers.
+
+## 3. System Architecture
 
 ![System Architecture](architecture.png)
 
-## 3. Quick Start Deployment
+## 4. Quick Start Deployment
 
 The entire research environment is fully containerized for seamless academic reproduction and evaluation.
 
@@ -55,7 +65,7 @@ cd backend
 python scripts/traffic_generator.py --rate 100 --duration 120 --target http://localhost:8000
 ```
 
-## 4. Technical Stack
+## 5. Technical Stack
 
 | Component | Technology | Purpose |
 |-----------|------------|---------|
@@ -65,5 +75,5 @@ python scripts/traffic_generator.py --rate 100 --duration 120 --target http://lo
 | **Forecasting** | PyTorch | LSTM neural network inference |
 | **Digital Twin** | React 18 + Vite | Interactive simulation dashboard |
 
-## 5. License
+## 6. License
 MIT — Engineered for the TwinEdgeGrid SPARC-funded research project.
