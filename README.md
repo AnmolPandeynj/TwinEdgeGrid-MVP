@@ -29,6 +29,12 @@ The real-time React dashboard visualizes the live state of the TwinEdgeGrid back
 - **AuGrid Forecasting (Bottom Left)**: Monitors the PyTorch LSTM inference engine. Plots the lookback-2 LSTM's predicted load against the actual IoT load in real-time. Includes real-time tracking of inference latency (ms) and calculation of the Root Mean Square Error (RMSE) to gauge predictive augury accuracy.
 - **SmartPrice Market (Bottom Right)**: Tracks the active Stackelberg game mechanics. Displays the current Game Round and the dynamically calculated grid Energy Deficit. The graph plots the fluctuating Purchase Price against the historical Cooperative vs. Hoarding prices, confirming the achievement of a Stackelberg equilibrium that financially benefits cooperating virtual prosumers.
 
+### 2.1 Prosumer Market Ledger
+
+![Prosumer Market Ledger](assets/ledger_preview.png)
+
+An interactive modal allows researchers to inspect the granular, per-prosumer variables computed by the Stackelberg game during each pricing round. It tracks the real-time `Cooperation Index`, `Reward Factor`, individual `Variable Price`, current `Stored Energy (kWh)`, and active status (`SELLING`, `HOARDING`, or `IDLE`) for all 50 virtual prosumers.
+
 ## 3. System Architecture
 
 ![System Architecture](architecture.png)
