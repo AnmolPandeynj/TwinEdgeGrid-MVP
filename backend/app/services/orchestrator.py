@@ -121,6 +121,9 @@ async def get_latest_dashboard_update(redis: Redis, settings: Settings) -> Dashb
     )
     falcon_state = await get_bandwidth_allocation(redis, settings)
     augrid_state = augrid_service.get_augrid_state()
+    
+    # Fetch current prosumer states instead of returning an empty list
+    prosumers = await smartprice_service.get_all_prosumers(redis, settings)
 
     return DashboardUpdate(
         timestamp=datetime.now(timezone.utc),
@@ -128,5 +131,5 @@ async def get_latest_dashboard_update(redis: Redis, settings: Settings) -> Dashb
         cloud_metrics=cloud_metrics,
         falcon=falcon_state,
         augrid=augrid_state,
-        smartprice=MarketState(),
+        smartprice=MarketState(prosumers=prosumers),
     )
