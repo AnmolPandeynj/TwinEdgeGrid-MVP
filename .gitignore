@@ -1,2 +1,4 @@
 backend/lstm/data/
 *.tar.gz
+.env
+__pycache__/
